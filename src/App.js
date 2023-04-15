@@ -1,6 +1,7 @@
 import FilterList from "./FilterList";
 import Accordion from "./Accordion/Accordion";
 import ImageSlider from "./ImageSlider";
+import CheckList from "./CheckList";
 
 function App() {
   return <>
@@ -9,6 +10,8 @@ function App() {
     <Accordion/>
     <hr></hr>
     <ImageSlider />
+    <hr></hr>
+    <CheckList />
     </>
   
 }
