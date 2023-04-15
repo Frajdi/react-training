@@ -21,7 +21,7 @@ const Accordion = () => {
   return (
     <div style={{width: '50%'}}>
         {accordionData.map(item =>
-            <Item item={item} />
+            <Item key={item.title} item={item} />
         )}
     </div>
   )
