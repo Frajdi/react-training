@@ -3,6 +3,7 @@ import Accordion from "./Accordion/Accordion";
 import ImageSlider from "./ImageSlider";
 import CheckList from "./CheckList";
 import Form from "./LoginForm/Form";
+import RestApi from "./RestApi/RestApi";
 
 function App() {
   return <>
@@ -15,6 +16,8 @@ function App() {
     <CheckList />
     <hr></hr>
     <Form />
+    <hr></hr>
+    <RestApi />
     </>
   
 }
