@@ -4,7 +4,7 @@ import Entry from "./Entry";
 const RestApi = () => {
     useEffect(() => { fetch('https://jsonplaceholder.typicode.com/users').then(response => response.json()).then(json => setData(json)) }, [])
 
-const [data, setData] = useState();
+const [data, setData] = useState(null);
 
 if (data === null) {
     return <div>
