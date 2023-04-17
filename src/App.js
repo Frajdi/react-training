@@ -5,7 +5,7 @@
 // import Form from "./LoginForm/Form";
 // import RestApi from "./RestApi/RestApi";
 import Contact from "./MultiPageForm/Contact";
-import Adress from "./MultiPageForm/Adress";
+import Adress from "./MultiPageForm/Adress/Adress";
 import Work from "./MultiPageForm/Work";
 import {Home} from "./MultiPageForm/Home";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";

@@ -1,22 +1,12 @@
 import { Stack, TextField } from "@mui/material";
 import { useContext } from "react";
-import { DataContext } from "./Home";
+import { DataContext } from "../Home";
+import useAdress from "./useAdress";
 
 const Adress = () => {
 
-    const { formData, setFormData } = useContext(DataContext)
-
-    const handleCountry = (e) => {
-        setFormData((prev => { return { ...prev, adress: { ...prev.adress, country: e.target.value } } }))
-    }
-
-    const handleCity = (e) => {
-        setFormData((prev => { return { ...prev, adress: { ...prev.adress, city: e.target.value } } }))
-    }
-
-    const handleStreetName = (e) => {
-        setFormData((prev => { return { ...prev, adress: { ...prev.adress, streetName: e.target.value } } }))
-    }
+    const {formData} = useContext(DataContext)
+    const {handleCountry, handleCity, handleStreetName} = useAdress()
 
     return <>
         <h1>Adress</h1>

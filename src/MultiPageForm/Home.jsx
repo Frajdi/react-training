@@ -1,11 +1,12 @@
 import { createContext, useState } from "react";
 import { Tab, Tabs } from "@mui/material";
 import { Outlet } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useMatch } from "react-router-dom";
 
 export const DataContext = createContext(null);
 
 export const Home = () => {
+
     const [formData, setFormData] = useState(
         {
             contact: {
@@ -28,7 +29,9 @@ export const Home = () => {
         });
 
 
-    const [activeTab, setActiveTab] = useState("contact");
+    const {params} = useMatch('/:path')
+    
+    const [activeTab, setActiveTab] = useState(params.path);
 
     const navigate = useNavigate();
 
