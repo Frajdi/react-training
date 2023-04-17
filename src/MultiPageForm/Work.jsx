@@ -1,13 +1,24 @@
 import { MenuItem, Select, Stack, TextField } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useContext } from "react";
+import {DataContext} from '../MultiPageForm/Home'
 
 const Work = () => {
+    const {formData, setFormData} = useContext(DataContext)
 
-    const [value, setValue] = useState(10)
+    const [value, setValue] = useState('euro')
 
     const handleChange = (event) => {
         setValue(event.target.value)
     }
+
+    const handleCompanyName = (e) => {
+        setFormData((prev => {return {...prev, work: {...prev.work, companyName: e.target.value}}}))
+    }
+
+    useEffect(() => {
+        console.log(formData)
+    }, [formData])
 
 const currencies = [
     {
@@ -35,7 +46,7 @@ const currencies = [
     return <>
         <h1>Work</h1>
         <Stack width={200} spacing={3}>
-            <TextField id="standard-basic" label="Company Name" variant="standard" />
+            <TextField value={formData.work.companyName} onChange={handleCompanyName} id="standard-basic" label="Company Name" variant="standard" />
             <TextField id="standard-basic" label="Job Position" variant="standard" />
             <Stack width={200} spacing={7} direction={"row"}>
                 <TextField
@@ -51,7 +62,7 @@ const currencies = [
                     onChange={handleChange}
                 >
                     {currencies.map((content) => {
-                         return  <MenuItem value={content.value}>{content.label}</MenuItem>
+                         return  <MenuItem key={content.id} value={content.value}>{content.label}</MenuItem>
                     })}
                 </Select>
             </Stack>

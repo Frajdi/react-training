@@ -1,33 +1,58 @@
+import { createContext, useState } from "react";
 import { Tab, Tabs } from "@mui/material";
-import { useState } from "react";
 import { Outlet } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
-const Home = () => {
+export const DataContext = createContext(null);
 
-    const [activeTab, setActiveTab] = useState("contact");
+export const Home = () => {
+  const [formData, setFormData] = useState({
+    contact: {
+      name: "",
+      surName: "",
+      email: "",
+      phoneNumber: "",
+    },
+    adress: {
+      country: "",
+      city: "",
+      streetName: "",
+    },
+    work: {
+      companyName: "",
+      jobPosition: "",
+      salary: "",
+      currency: "",
+    },
+  });
 
-    const navigate = useNavigate();
 
-    const handleChange = (event, newValue) => {
-        setActiveTab(newValue)
-        navigate(newValue)
-    }
+  const [activeTab, setActiveTab] = useState("contact");
 
-    return <>
-        <Tabs
-            value={activeTab}
-            onChange={handleChange}
-            textColor="primary"
-            indicatorColor="primary"
-            centered
-        >
-            <Tab value="contact" label="Contact" />
-            <Tab value="adress" label="Adress" />
-            <Tab value="work" label="Work" />
-        </Tabs>
+  const navigate = useNavigate();
+
+  const handleChange = (event, newValue) => {
+    setActiveTab(newValue);
+    navigate(newValue);
+  };
+
+  return (
+    <>
+      <Tabs
+        value={activeTab}
+        onChange={handleChange}
+        textColor="primary"
+        indicatorColor="primary"
+        centered
+      >
+        <Tab value="contact" label="Contact" />
+        <Tab value="adress" label="Adress" />
+        <Tab value="work" label="Work" />
+      </Tabs>
+      <DataContext.Provider value={{formData, setFormData}}>
         <Outlet />
+      </DataContext.Provider>
     </>
-}
+  );
+};
 
-export default Home;

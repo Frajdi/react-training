@@ -7,12 +7,8 @@
 import Contact from "./MultiPageForm/Contact";
 import Adress from "./MultiPageForm/Adress";
 import Work from "./MultiPageForm/Work";
-import Home from "./MultiPageForm/Home";
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
-
+import {Home} from "./MultiPageForm/Home";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 function App() {
 
@@ -20,24 +16,28 @@ function App() {
     {
       path: "/",
       element: <Home />,
-      children: [{
-        path: "/contact",
-        element: <Contact />,
-      },
-      {
-        path: "/adress",
-        element: <Adress />
-      },
-      {
-        path: "/work",
-        element: <Work />
-      }]
-    }
+      children: [
+        {
+          path: "/contact",
+          element: <Contact />,
+        },
+        {
+          path: "/adress",
+          element: <Adress />,
+        },
+        {
+          path: "/work",
+          element: <Work />,
+        },
+      ],
+    },
   ]);
 
-  return <>
-    <RouterProvider router={router} />
-    {/* <FilterList />
+  return (
+    <>
+      
+        <RouterProvider router={router} />
+      {/* <FilterList />
     <hr></hr>
     <Accordion/>
     <hr></hr>
@@ -48,8 +48,8 @@ function App() {
     <Form />
     <hr></hr>
     <RestApi /> */}
-  </>
-
+    </>
+  );
 }
 
 export default App;
