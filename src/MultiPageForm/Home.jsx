@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Button, Stack, Tab, Tabs } from "@mui/material";
 import { Outlet } from "react-router-dom";
 import { useNavigate, useMatch } from "react-router-dom";
+import Data from "./Data";
 
 
 export const Home = () => {
@@ -57,9 +58,8 @@ export const Home = () => {
                 <Tab value="work" label="Work" />
             </Tabs>
             <Stack direction={"row"} spacing={4}>
-            {/* <DataContext.Provider value={{ formData, setFormData }}> */}
                 <Outlet />
-            {/* </DataContext.Provider> */}
+                <Data />
             <Button onClick={onSubmit} variant="contained" sx={{height: 40}}>Submit</Button>
             </Stack>
         </>
