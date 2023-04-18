@@ -1,12 +1,12 @@
 import { Stack, TextField } from "@mui/material";
 import { useContext } from "react";
-import { DataContext } from "../Home";
+import { DataContext } from "../../App";
 import useAdress from "./useAdress";
 
 const Adress = () => {
 
-    const {formData} = useContext(DataContext)
-    const {handleCountry, handleCity, handleStreetName} = useAdress()
+    const {formData, setFormData} = useContext(DataContext)
+    const {handleCountry, handleCity, handleStreetName} = useAdress(setFormData)
 
     return <>
         <h1>Adress</h1>

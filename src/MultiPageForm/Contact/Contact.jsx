@@ -1,26 +1,13 @@
 import { Stack, TextField } from "@mui/material";
 import { useContext } from "react";
-import { DataContext } from "./Home";
+import { DataContext } from "../../App";
+import useContact from "./useContact";
 
 const Contact = () => {
     
     const { formData, setFormData } = useContext(DataContext)
     
-const handleName = (e) => {
-    setFormData((prev => {return {...prev, contact: {...prev.contact, name: e.target.value}}}))
-}
-
-const handleSurname = (e) => {
-  setFormData((prev => {return {...prev, contact: {...prev.contact, surName: e.target.value}}}))
-}
-
-const handleEmail = (e) => {
-  setFormData((prev => {return {...prev, contact: {...prev.contact, email: e.target.value}}}))
-}
-
-const handleNumber = (e) => {
- setFormData((prev => {return {...prev, contact: {...prev.contact, phoneNumber: e.target.value}}}))
-}
+const {handleName, handleSurname, handleEmail, handleNumber} = useContact(setFormData);
 
     return <>
         <h1>Contact</h1>

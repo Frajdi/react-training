@@ -1,10 +1,5 @@
-import React, { useContext } from 'react'
-import { DataContext } from '../Home'
 
-const useAdress = () => {
-
-    const { setFormData} = useContext(DataContext)
-
+const useAdress = (setFormData) => {
 
     const handleCountry = (e) => {
         setFormData((prev => { return { ...prev, adress: { ...prev.adress, country: e.target.value } } }))
@@ -26,4 +21,4 @@ const useAdress = () => {
   }
 }
 
-export default useAdress
+export default useAdress;

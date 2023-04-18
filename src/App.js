@@ -4,13 +4,38 @@
 // import CheckList from "./CheckList";
 // import Form from "./LoginForm/Form";
 // import RestApi from "./RestApi/RestApi";
-import Contact from "./MultiPageForm/Contact";
+import Contact from "./MultiPageForm/Contact/Contact";
 import Adress from "./MultiPageForm/Adress/Adress";
-import Work from "./MultiPageForm/Work";
-import {Home} from "./MultiPageForm/Home";
+import Work from "./MultiPageForm/Work/Work";
+import Submit from "./MultiPageForm/Submit";
+import { Home} from "./MultiPageForm/Home";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createContext, useState } from "react";
+
+export const DataContext = createContext(null);
 
 function App() {
+
+  const [formData, setFormData] = useState(
+    {
+        contact: {
+            name: "",
+            surName: "",
+            email: "",
+            phoneNumber: "",
+        },
+        adress: {
+            country: "",
+            city: "",
+            streetName: "",
+        },
+        work: {
+            companyName: "",
+            jobPosition: "",
+            salary: "",
+            currency: "",
+        },
+    });
 
   const router = createBrowserRouter([
     {
@@ -31,12 +56,17 @@ function App() {
         },
       ],
     },
+    {
+      path: "submit",
+      element: <Submit />
+    }
   ]);
 
   return (
     <>
-      
-        <RouterProvider router={router} />
+      <DataContext.Provider value={{ formData, setFormData }}>
+        <RouterProvider router={router} />  
+        </DataContext.Provider>
       {/* <FilterList />
     <hr></hr>
     <Accordion/>
