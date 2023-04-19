@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button, Stack, Tab, Tabs } from "@mui/material";
+import { Stack, Tab, Tabs } from "@mui/material";
 import { Outlet } from "react-router-dom";
 import { useNavigate, useMatch } from "react-router-dom";
 import Data from "./Data";
@@ -40,9 +40,6 @@ export const Home = () => {
         navigate(newValue);
     };
 
-    const onSubmit = () => {
-        navigate('/submit')
-    }
 
     return (
         <>
@@ -60,7 +57,6 @@ export const Home = () => {
             <Stack direction={"row"} spacing={4}>
                 <Outlet />
                 <Data />
-            <Button onClick={onSubmit} variant="contained" sx={{height: 40}}>Submit</Button>
             </Stack>
         </>
     );
