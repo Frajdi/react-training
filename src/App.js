@@ -40,18 +40,18 @@ function App() {
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <Home />,
+      element: <Home/>,
       children: [
         {
-          path: "/contact",
+          path: "contact",
           element: <Contact />,
         },
         {
-          path: "/adress",
+          path: "adress",
           element: <Adress />,
         },
         {
-          path: "/work",
+          path: "work",
           element: <Work />,
         },
       ],
