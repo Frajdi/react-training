@@ -44,7 +44,7 @@ export const Data = () => {
 
     const { country, city, streetName } = adress;
 
-    const { company, jobPosition, salary, currency } = work;
+    const { companyName, jobPosition, salary, currency } = work;
 
     const rows = [
       createData("Name", name),
@@ -54,7 +54,7 @@ export const Data = () => {
       createData("Country", country),
       createData("City", city),
       createData("Street Name", streetName),
-      createData("Company Name", company),
+      createData("Company Name", companyName),
       createData("Job Position", jobPosition),
       createData("Salary", salary + " " + getSymbol(properties.currencies, currency) ),
     ];
