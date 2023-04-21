@@ -1,7 +1,10 @@
-import { FormControl, MenuItem, Select, Stack, TextField } from "@mui/material";
+import {  MenuItem, Select, Stack, TextField } from "@mui/material";
 import { useContext } from "react";
 import { DataContext } from "../../App";
+import {motion} from 'framer-motion'
 import useWork from "./useWork";
+import FormControlUnstyled, {
+  } from '@mui/base/FormControlUnstyled';
 
 const Work = () => {
     const { formData, setFormData } = useContext(DataContext)
@@ -11,7 +14,12 @@ const Work = () => {
     const { work } = formData;
     const { companyName, jobPosition, salary, currency } = work;
 
-    return <>
+    return <motion.div
+    initial={{ y: 30, opacity: 0 }}
+    animate={{ y: 0, opacity: 1 }}
+    exit={{ y: -10, opacity: 0 }}
+    transition={{ duration: 1 }}
+  >
         <h1>Work</h1>
         <Stack width={200} spacing={3}>
             <TextField 
@@ -42,7 +50,7 @@ const Work = () => {
                     error={salary === ''}
                     helperText={salary === ''? "Broke nigga": ""}
                 />
-                <FormControl error={currency === ''}>
+                <FormControlUnstyled  error={currency === ''} >
                 <Select
                     labelId="demo-simple-select-label"
                     id="demo-simple-select"
@@ -54,10 +62,10 @@ const Work = () => {
                         return <MenuItem key={content.id} value={content.value}>{content.label}</MenuItem>
                     })}
                 </Select>
-                </FormControl>
+                </FormControlUnstyled >
             </Stack>
         </Stack>
-    </>
+    </ motion.div>
 }
 
 export default Work;

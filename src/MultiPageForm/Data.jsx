@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { DataContext } from "../App";
+import { motion } from "framer-motion";
 
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -21,54 +22,65 @@ export const Data = () => {
 
   const properties = useWork(formData);
 
-  const getSymbol = (currencyArray, label) =>{
-    try{
-      const currentCurrencie = currencyArray.find(item => item.value === label)
-      return currentCurrencie.label
-    }catch{
-      return ''
-    } 
-  }
-    
+  const getSymbol = (currencyArray, label) => {
+    try {
+      const currentCurrencie = currencyArray.find(
+        (item) => item.value === label
+      );
+      return currentCurrencie.label;
+    } catch {
+      return "";
+    }
+  };
+
   const onSubmit = () => {
     navigate("/submit");
   };
-  
+
   function createData(titles, data) {
     return { titles, data };
   }
 
-    const { contact, adress, work } = formData;
+  const { contact, adress, work } = formData;
 
-    const { name, surName, email, phoneNumber } = contact;
+  const { name, surName, email, phoneNumber } = contact;
 
-    const { country, city, streetName } = adress;
+  const { country, city, streetName } = adress;
 
-    const { companyName, jobPosition, salary, currency } = work;
+  const { companyName, jobPosition, salary, currency } = work;
 
-    const rows = [
-      createData("Name", name),
-      createData("Surname", surName),
-      createData("Email", email),
-      createData("Phone Number", phoneNumber),
-      createData("Country", country),
-      createData("City", city),
-      createData("Street Name", streetName),
-      createData("Company Name", companyName),
-      createData("Job Position", jobPosition),
-      createData("Salary", salary + " " + getSymbol(properties.currencies, currency) ),
-    ];
+  const rows = [
+    createData("Name", name),
+    createData("Surname", surName),
+    createData("Email", email),
+    createData("Phone Number", phoneNumber),
+    createData("Country", country),
+    createData("City", city),
+    createData("Street Name", streetName),
+    createData("Company Name", companyName),
+    createData("Job Position", jobPosition),
+    createData(
+      "Salary",
+      salary + " " + getSymbol(properties.currencies, currency)
+    ),
+  ];
 
-    return (
-      <Stack>
-        <TableContainer sx={{ width: "500px" }} component={Paper}>
-          <Table sx={{ width: "500px" }} aria-label="customized table">
-            <TableHead>
-              <TableRow sx={{ backgroundColor: "#1976d2" }}>
-                <TableCell sx={{ color: "white" }}>{name}'s data</TableCell>
-                <TableCell></TableCell>
-              </TableRow>
-            </TableHead>
+  return (
+    <Stack>
+          <motion.div
+          style={{overflow: 'hidden'}}
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 550, opacity: 1 }}
+            transition={{ duration: 1 }}
+          >
+      <TableContainer sx={{ width: "500px" }} component={Paper}>
+        <Table sx={{ width: "500px" }} aria-label="customized table">
+          <TableHead>
+            <TableRow sx={{ backgroundColor: "#1976d2" }}>
+              <TableCell sx={{ color: "white" }}>{name}'s data</TableCell>
+              <TableCell></TableCell>
+            </TableRow>
+          </TableHead>
             <TableBody>
               {rows.map((row, index) => (
                 <TableRow key={index}>
@@ -87,13 +99,12 @@ export const Data = () => {
                 </TableRow>
               ))}
             </TableBody>
-          </Table>
-        </TableContainer>
-        <Button onClick={onSubmit} variant="contained" sx={{ height: 40 }}>
-          Submit
-        </Button>
-      </Stack>
-    );
-  };
-
-
+        </Table>
+      </TableContainer>
+          </motion.div>
+      <Button onClick={onSubmit} variant="contained" sx={{ height: 40 }}>
+        Submit
+      </Button>
+    </Stack>
+  );
+};

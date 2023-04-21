@@ -1,7 +1,9 @@
 import { Stack, TextField } from "@mui/material";
 import { useContext } from "react";
 import { DataContext } from "../../App";
+import {motion} from 'framer-motion'
 import useAdress from "./useAdress";
+
 
 const Adress = () => {
 
@@ -11,7 +13,12 @@ const Adress = () => {
     const { adress } = formData;
     const { country, city, streetName } = adress;
 
-    return <>
+    return <motion.div
+    initial={{ y: 30, opacity: 0 }}
+    animate={{ y: 0, opacity: 1 }}
+    exit={{ y: -10, opacity: 0 }}
+    transition={{ duration: 1 }}
+  >
         <h1>Adress</h1>
         <Stack width={200} spacing={3}>
             <TextField 
@@ -42,7 +49,7 @@ const Adress = () => {
             helperText={streetName === ''? 'Street name is required': ''}
             />
         </Stack>
-    </>
+    </motion.div>
 }
 
 export default Adress;
