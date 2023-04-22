@@ -9,10 +9,10 @@
   }
   
   .box {
-    background: white;
+    background: #e1f1fd;
     border-radius: 30px;
-    width: 90px;
-    height: 90px;
+    width: 70px;
+    height: 70px;
     display: flex;
     justify-content: center;
     align-items: center;

@@ -1,37 +1,44 @@
 import { React, useEffect } from "react";
-import { motion, useMotionValue, useMotionValueEvent, useTransform } from "framer-motion";
+import {
+  motion,
+  useMotionValue,
+  useMotionValueEvent,
+  useTransform,
+} from "framer-motion";
 import "./switch.css";
 
 export const Switch = (props) => {
   const x = useMotionValue(0);
   const xInput = [-100, 0, 100];
-  const background = useTransform(x, xInput, [
-    "#D32F2F",
-    "#1976D2",
-    "#001E3C"
-  ]);
-  const color = useTransform(x, xInput, [
-    "#D32F2F",
-    "#1976D2",
-    "#001E3C"
-  ]);
+  const background = useTransform(x, xInput, ["#D32F2F", "#1976D2", "#001E3C"]);
+  const color = useTransform(x, xInput, ["#D32F2F", "#1976D2", "#001E3C"]);
   const tickPath = useTransform(x, [10, 100], [0, 1]);
   const crossPathA = useTransform(x, [-10, -55], [0, 1]);
   const crossPathB = useTransform(x, [-50, -100], [0, 1]);
 
   useMotionValueEvent(x, "change", (latest) => {
     if (latest >= 150) {
-      props.submit()
+      props.submit();
     } else if (latest <= -150) {
-      props.restartForm()
+      props.restartForm();
     }
-  })
+  });
 
   return (
-    <motion.div className="example-container" style={{ background }}>
+    <motion.div
+      className="example-container"
+      style={{ overflow: "hidden", background }}
+      initial={{ width: 0, height: 0, opacity: 0 }}
+      animate={{ width: 500, height: 100, opacity: 1 }}
+      transition={{ duration: 1 }}
+    >
       <motion.div
         className="box"
         style={{ x }}
+        initial={{ width: 0, height: 0 }}
+        animate={{ width: 70, height: 70 }}
+        whileHover={{ scale: 1.1 }}
+        transition={{ type: "spring", stiffness: 400, damping: 10 }}
         drag="x"
         dragConstraints={{ left: 0, right: 0 }}
       >

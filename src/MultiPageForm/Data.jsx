@@ -98,7 +98,7 @@ export const Data = () => {
   ];
 
   return (
-    <Stack>
+    <Stack  alignItems='center'>
           <motion.div
           style={{overflow: 'hidden'}}
             initial={{ height: 0, opacity: 0 }}
@@ -135,11 +135,17 @@ export const Data = () => {
       </TableContainer>
           </motion.div>
       <Switch submit={onSubmit} restartForm={setEmptyData} />
-            <Stack direction='row' justifyContent={'space-between'}>
+           <motion.div
+           initial={{ width: 0}}
+           animate={{width: '100%'}}
+           transition={{duration: 1}}
+           >     
+            <Stack direction='row' justifyContent={'space-between'} width='100%'>
             <Typography variant="h6" color={'#D32F2F'}>Delete</Typography>
             <Typography variant="h6" color={'#1976D2'}>← Slide →</Typography>
             <Typography variant="h6" color={'#001E3C'}>Submit</Typography>
             </Stack>
+            </motion.div>
     </Stack>
   );
 };
