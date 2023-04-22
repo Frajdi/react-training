@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { DataContext } from "../App";
 import { motion } from "framer-motion";
 
@@ -16,9 +16,17 @@ import { useNavigate } from "react-router-dom";
 import useWork from "./Work/useWork";
 import { Switch } from "./Components/Switch";
 import { Typography } from "@mui/material";
+import useAdress from "./Adress/useAdress";
+import useContact from "./Contact/useContact";
 
 export const Data = () => {
   const { formData, setFormData } = useContext(DataContext);
+
+  const {handleCity} = useAdress(setFormData)
+  const {handleCurrency} = useWork(setFormData)
+  const {handleEmail} = useContact(setFormData)
+  const fakeEvent = {target: {value: ''}}
+  const [rerender, setRerender] = useState(true)
 
   const handleRestartForm = (formData) => {
     for (const key in formData) {
@@ -33,6 +41,10 @@ export const Data = () => {
 
   const setEmptyData = () => {
     setFormData(handleRestartForm(formData))
+    setRerender((prev) => !prev)
+    handleCity(fakeEvent)
+    handleCurrency(fakeEvent)
+    handleEmail(fakeEvent)
   }
 
   const navigate = useNavigate();
