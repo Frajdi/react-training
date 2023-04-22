@@ -15,6 +15,7 @@ import Stack from "@mui/material/Stack";
 import { useNavigate } from "react-router-dom";
 import useWork from "./Work/useWork";
 import { Switch } from "./Components/Switch";
+import { Typography } from "@mui/material";
 
 export const Data = () => {
   const { formData, setFormData } = useContext(DataContext);
@@ -119,6 +120,11 @@ export const Data = () => {
       </TableContainer>
           </motion.div>
       <Switch submit={onSubmit} restartForm={setEmptyData} />
+            <Stack direction='row' justifyContent={'space-between'}>
+            <Typography variant="h6" color={'#D32F2F'}>Delete</Typography>
+            <Typography variant="h6" color={'#1976D2'}>← Slide →</Typography>
+            <Typography variant="h6" color={'#001E3C'}>Submit</Typography>
+            </Stack>
     </Stack>
   );
 };
