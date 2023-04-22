@@ -23,7 +23,7 @@ export const Switch = (props) => {
     if (latest >= 200) {
       props.submit()
     } else if (latest <= -200) {
-      
+      props.restartForm()
     }
   })
 

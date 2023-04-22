@@ -27,10 +27,12 @@ export const Data = () => {
         handleRestartForm(formData[key])
       }
     }
-    setFormData(formData)
+    return formData
   }
 
-  console.log(handleRestart(formData))
+  const setEmptyData = () => {
+    setFormData(handleRestartForm(formData))
+  }
 
   const navigate = useNavigate();
 
@@ -116,7 +118,7 @@ export const Data = () => {
         </Table>
       </TableContainer>
           </motion.div>
-      <Switch submit={onSubmit} />
+      <Switch submit={onSubmit} restartForm={setEmptyData} />
     </Stack>
   );
 };
