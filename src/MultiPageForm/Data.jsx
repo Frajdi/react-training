@@ -17,7 +17,20 @@ import useWork from "./Work/useWork";
 import { Switch } from "./Components/Switch";
 
 export const Data = () => {
-  const { formData } = useContext(DataContext);
+  const { formData, setFormData } = useContext(DataContext);
+
+  const handleRestartForm = (formData) => {
+    for (const key in formData) {
+      if(typeof formData[key] === 'string'){
+        formData[key] = ''
+      }else{
+        handleRestartForm(formData[key])
+      }
+    }
+    setFormData(formData)
+  }
+
+  console.log(handleRestart(formData))
 
   const navigate = useNavigate();
 
