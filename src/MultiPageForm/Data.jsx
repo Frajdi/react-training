@@ -40,6 +40,9 @@ export const Data = () => {
   }
 
   const setEmptyData = () => {
+    //since we are updating the form data context we want to see a real time update in every page of ui 
+    // se we call here every state update from each of our pages so what we are doing is calling the set functions
+    //of every useContext instance in order to triger an update evreywhere the context data is distributed to
     setFormData(handleRestartForm(formData))
     setRerender((prev) => !prev)
     handleCity(fakeEvent)
