@@ -20,9 +20,9 @@ export const Switch = (props) => {
   const crossPathB = useTransform(x, [-50, -100], [0, 1]);
 
   useMotionValueEvent(x, "change", (latest) => {
-    if (latest >= 200) {
+    if (latest >= 150) {
       props.submit()
-    } else if (latest <= -200) {
+    } else if (latest <= -150) {
       props.restartForm()
     }
   })
