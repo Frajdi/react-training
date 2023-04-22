@@ -35,7 +35,7 @@ export const Home = () => {
         <Tab value="/adress" label="Adress" />
         <Tab value="/work" label="Work" />
       </Tabs>
-      <Stack direction={"row"} spacing={4}>
+      <Stack direction={"row"} spacing={4} justifyContent={'space-around'}>
           <Outlet />
         <Data />
       </Stack>

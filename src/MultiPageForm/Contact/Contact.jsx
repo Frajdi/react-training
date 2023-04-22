@@ -1,4 +1,4 @@
-import { Stack, TextField } from "@mui/material";
+import { Stack, TextField, Typography } from "@mui/material";
 import { useContext } from "react";
 import { DataContext } from "../../App";
 import {motion} from 'framer-motion'
@@ -19,8 +19,10 @@ const Contact = () => {
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 1 }}
     >
-      <h1>Contact</h1>
-      <Stack width={200} spacing={3}>
+      <Typography variant="h3" color={'#1976D2'}>
+        Contact
+      </Typography>
+      <Stack width={300} spacing={5} height={500}>
         <TextField
           value={name}
           onChange={handleName}

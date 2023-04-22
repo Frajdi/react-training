@@ -1,4 +1,4 @@
-import { Stack, TextField } from "@mui/material";
+import { Stack, TextField, Typography } from "@mui/material";
 import { useContext } from "react";
 import { DataContext } from "../../App";
 import {motion} from 'framer-motion'
@@ -19,8 +19,10 @@ const Adress = () => {
     exit={{ y: -10, opacity: 0 }}
     transition={{ duration: 1 }}
   >
-        <h1>Adress</h1>
-        <Stack width={200} spacing={3}>
+        <Typography variant="h3" color={'#1976D2'}>
+            Adress
+        </Typography>
+        <Stack width={300} spacing={7} height={500}>
             <TextField 
             value={country} 
             onChange={handleCountry} 

@@ -14,6 +14,7 @@ import Stack from "@mui/material/Stack";
 
 import { useNavigate } from "react-router-dom";
 import useWork from "./Work/useWork";
+import { Switch } from "./Components/Switch";
 
 export const Data = () => {
   const { formData } = useContext(DataContext);
@@ -70,7 +71,7 @@ export const Data = () => {
           <motion.div
           style={{overflow: 'hidden'}}
             initial={{ height: 0, opacity: 0 }}
-            animate={{ height: 550, opacity: 1 }}
+            animate={{ height: 585, opacity: 1 }}
             transition={{ duration: 1 }}
           >
       <TableContainer sx={{ width: "500px" }} component={Paper}>
@@ -102,9 +103,11 @@ export const Data = () => {
         </Table>
       </TableContainer>
           </motion.div>
-      <Button onClick={onSubmit} variant="contained" sx={{ height: 40 }}>
-        Submit
-      </Button>
+      <Switch submit={onSubmit} />
     </Stack>
   );
 };
+
+{/* <Button onClick={onSubmit} variant="contained" sx={{ height: 40 }}>
+  Submit
+</Button> */}

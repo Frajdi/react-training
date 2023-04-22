@@ -1,0 +1,25 @@
+.example-container {
+    width: 500px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0 0 7px 7px;
+    overflow-x: hidden;
+  }
+  
+  .box {
+    background: white;
+    border-radius: 30px;
+    width: 90px;
+    height: 90px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .progress-icon {
+    width: 80%;
+    height: 80%;
+  }
+  
